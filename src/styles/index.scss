@@ -13,6 +13,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 @import './mat-palette-gen';
+@import './utils';
 @import './variables';
 
 $currency-converter-primary: mat.define-palette(createPalette($primary));
@@ -45,7 +46,6 @@ body {
   margin: 0;
   color: $default-text;
   background-color: $body;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
