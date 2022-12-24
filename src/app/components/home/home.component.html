@@ -1,23 +1,34 @@
 <h1 class="page-title">I want to convert</h1>
-<form [formGroup]="conversionForm">
+<form [formGroup]="conversionForm" (submit)="convert()">
   <mat-form-field>
     <mat-label>Amount</mat-label>
     <input type="number" formControlName="amount" matInput>
   </mat-form-field>
-  <mat-form-field>
-    <mat-label>From</mat-label>
-    <mat-select formControlName="from">
-      <mat-option *ngFor="let symbol of symbols" [value]="symbol">{{ symbol }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <button mat-raised-button (click)="switchSymbols()">
-    <mat-icon color="primary" fontIcon="compare_arrows"></mat-icon>
-  </button>
-  <mat-form-field>
-    <mat-label>To</mat-label>
-    <mat-select formControlName="to">
-      <mat-option *ngFor="let symbol of symbols" [value]="symbol">{{ symbol }}</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div class="symbols">
+    <mat-form-field>
+      <mat-label>From</mat-label>
+      <mat-select formControlName="from">
+        <mat-option *ngFor="let symbol of symbols" [value]="symbol">{{ symbol }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button (click)="switchSymbols($event)">
+      <mat-icon color="primary" fontIcon="compare_arrows"></mat-icon>
+    </button>
+    <mat-form-field>
+      <mat-label>To</mat-label>
+      <mat-select formControlName="to">
+        <mat-option *ngFor="let symbol of symbols" [value]="symbol">{{ symbol }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
   <button [disabled]="conversionForm.invalid" type="submit" mat-raised-button color="primary">CONVERT</button>
 </form>
+<div *ngIf="conversion" class="conversion">
+  <span class="result">
+    {{ conversion.query.amount | currency:conversion.query.from:'code' }} = <span>{{ conversion.result | currency:conversion.query.to:'code' }}</span>
+  </span>
+  <p>
+    {{ 1|currency:conversion.query.from:'code' }} = {{ conversion.info.rate|currency:conversion.query.to:'code' }}<br>
+    {{ 1|currency:conversion.query.to:'code' }} = {{ (1 / conversion.info.rate)|currency:conversion.query.from:'code' }}
+  </p>
+</div>

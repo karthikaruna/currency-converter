@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CurrencyDataService } from 'src/app/services/currency.data.service';
+import { ConvertQuery, ConvertResponse as Conversion, CurrencyDataService } from 'src/app/services/currency.data.service';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +10,22 @@ import { CurrencyDataService } from 'src/app/services/currency.data.service';
 export class HomeComponent implements OnInit {
   constructor(private currencyDataService: CurrencyDataService) {}
 
-  symbols: Array<string> = [];
+  symbols!: Array<string>;
+  conversion!: Conversion;
 
   ngOnInit() {
     this.currencyDataService.getSymbols().subscribe((symbols) => this.symbols = symbols);
   }
 
-  switchSymbols() {
+  convert() {
+    this.currencyDataService.convert(
+      this.conversionForm.value as unknown as ConvertQuery
+    ).subscribe((conversion) => this.conversion = conversion);
+  }
+
+  switchSymbols(event: Event) {
+    event.preventDefault();
+
     const {
       from: { value: newToValue },
       to: { value: newFromValue }

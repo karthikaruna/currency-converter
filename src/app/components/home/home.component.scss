@@ -1,9 +1,35 @@
+@import 'src/styles/variables';
+
 form {
   display: flex;
   align-items: center;
+}
 
-  > *:not(:first-child) {
-    margin-left: 24px;
+.symbols {
+  display: flex;
+  align-items: center;
+
+  &,
+  mat-form-field {
+    flex: 1;
+  }
+
+  &,
+  button {
+    margin: 0 24px;
+  }
+}
+
+.conversion {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.result {
+  font-size: 48px;
+
+  span {
+    color: $accent;
   }
 }
 
