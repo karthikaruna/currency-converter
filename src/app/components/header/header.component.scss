@@ -1,3 +1,5 @@
+@import 'src/styles/variables';
+
 :host {
   display: block;
   background-color: white;
@@ -24,10 +26,10 @@ nav {
 a {
   text-decoration: none;
   text-transform: uppercase;
-  color: var(--default-text);
+  color: $default-text;
   padding: 18px 12px;
 
   &.active {
-    border-bottom: 2px solid var(--primary);
+    border-bottom: 2px solid $primary;
   }
 }
