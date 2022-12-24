@@ -1,1 +1,23 @@
 <h1>I want to convert</h1>
+<form [formGroup]="conversionForm">
+  <mat-form-field>
+    <mat-label>Amount</mat-label>
+    <input type="number" formControlName="amount" matInput>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>From</mat-label>
+    <mat-select formControlName="from">
+      <mat-option *ngFor="let symbol of symbols" [value]="symbol">{{ symbol }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button>
+    <mat-icon color="primary" fontIcon="compare_arrows"></mat-icon>
+  </button>
+  <mat-form-field>
+    <mat-label>To</mat-label>
+    <mat-select formControlName="to">
+      <mat-option *ngFor="let symbol of symbols" [value]="symbol">{{ symbol }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button [disabled]="conversionForm.invalid" type="submit" mat-raised-button color="primary">CONVERT</button>
+</form>

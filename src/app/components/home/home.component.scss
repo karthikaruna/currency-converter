@@ -1,0 +1,16 @@
+form {
+  display: flex;
+  align-items: center;
+
+  > *:not(:first-child) {
+    margin-left: 24px;
+  }
+}
+
+:host {
+  ::ng-deep {
+    .mdc-text-field {
+      background-color: transparent;
+    }
+  }
+}
