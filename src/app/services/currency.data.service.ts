@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 
@@ -15,6 +15,20 @@ interface SymbolsResponse {
   };
 }
 
+export interface ConvertQuery {
+  from: string;
+  to: string;
+  amount: number;
+}
+
+export interface ConvertResponse {
+  info: {
+    rate: number;
+  };
+  query: ConvertQuery;
+  result: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,5 +37,14 @@ export class CurrencyDataService {
 
   getSymbols() {
     return this.http.get<SymbolsResponse>(`${API_BASE}/symbols`).pipe(map((r) => Object.keys(r.symbols)));
+  }
+
+  convert({ from, to, amount }: ConvertQuery) {
+    const params = new HttpParams()
+      .set('from', from)
+      .set('to', to)
+      .set('amount', amount);
+
+    return this.http.get<ConvertResponse>(`${API_BASE}/convert`, { params });
   }
 }
