@@ -16,6 +16,16 @@ export class HomeComponent implements OnInit {
     this.currencyDataService.getSymbols().subscribe((symbols) => this.symbols = symbols);
   }
 
+  switchSymbols() {
+    const {
+      from: { value: newToValue },
+      to: { value: newFromValue }
+    } = this.conversionForm.controls;
+
+    this.conversionForm.controls.from.setValue(newFromValue);
+    this.conversionForm.controls.to.setValue(newToValue);
+  }
+
   conversionForm = new FormGroup({
     amount: new FormControl(null, Validators.required),
     from: new FormControl(null, Validators.required),
