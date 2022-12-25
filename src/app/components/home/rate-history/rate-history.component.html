@@ -1,0 +1,13 @@
+<h2 class="section-title">Exchange History</h2>
+<div>
+  <mat-form-field>
+    <mat-label>Duration</mat-label>
+    <mat-select [(ngModel)]="range">
+      <mat-option *ngFor="let range of ranges" [value]="range.value">{{ range.label }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-radio-group color="primary" [(ngModel)]="view">
+    <mat-radio-button value="TABLE">Table</mat-radio-button>
+    <mat-radio-button value="CHART">Chart</mat-radio-button>
+  </mat-radio-group>
+</div>

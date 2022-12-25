@@ -36,7 +36,7 @@ interface TimeseriesQuery {
   symbols: string;
 }
 
-interface TimeseriesResponse {
+export interface TimeseriesResponse {
   base: string;
   end_date: string;
   start_date: string;
