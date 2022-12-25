@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { CurrencyDataService, TimeseriesResponse } from 'src/app/services/currency.data.service';
+import { CurrencyDataService } from 'src/app/services/currency.data.service';
 
 @Component({
   selector: 'app-rate-history',
@@ -12,7 +12,7 @@ export class RateHistoryComponent implements OnChanges {
 
   range: 7 | 14 | 30 = 7;
   view: 'TABLE' | 'CHART' = 'TABLE';
-  timeseries!: TimeseriesResponse;
+  timeseries!: Array<{ date: string; rate: number }>;
 
   ranges = [{
     label: '7 days',

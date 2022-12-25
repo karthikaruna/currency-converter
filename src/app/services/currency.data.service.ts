@@ -36,7 +36,7 @@ interface TimeseriesQuery {
   symbols: string;
 }
 
-export interface TimeseriesResponse {
+interface TimeseriesResponse {
   base: string;
   end_date: string;
   start_date: string;
@@ -73,6 +73,8 @@ export class CurrencyDataService {
       .set('base', base)
       .set('symbols', symbols);
 
-    return this.http.get<TimeseriesResponse>(`${API_BASE}/timeseries`, { params });
+    return this.http.get<TimeseriesResponse>(`${API_BASE}/timeseries`, { params }).pipe(map((r) =>
+      Object.keys(r.rates).map((date) => ({ date, rate: r.rates[date][symbols] }))
+    ));
   }
 }

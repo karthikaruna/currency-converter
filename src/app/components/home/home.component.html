@@ -2,7 +2,7 @@
 <form [formGroup]="conversionForm" (submit)="convert()">
   <mat-form-field>
     <mat-label>Amount</mat-label>
-    <input type="number" formControlName="amount" matInput>
+    <input type="number" min="0" formControlName="amount" matInput>
   </mat-form-field>
   <div class="symbols">
     <mat-form-field>
@@ -21,14 +21,15 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <button [disabled]="conversionForm.invalid" type="submit" mat-raised-button color="primary">CONVERT</button>
+  <button [disabled]="conversionForm.invalid" type="submit" mat-raised-button color="primary">Convert</button>
 </form>
 <div *ngIf="conversion" class="conversion">
   <span class="result">
-    {{ conversion.query.amount | currency:conversion.query.from:'code' }} = <span>{{ conversion.result | currency:conversion.query.to:'code' }}</span>
+    {{ conversion.query.amount | currency:conversion.query.from:'code' }} = <span>{{ conversion.result | currency:conversion.query.to:'code':'1.2-4' }}</span>
   </span>
   <p>
-    {{ 1|currency:conversion.query.from:'code' }} = {{ conversion.info.rate|currency:conversion.query.to:'code' }}<br>
-    {{ 1|currency:conversion.query.to:'code' }} = {{ (1 / conversion.info.rate)|currency:conversion.query.from:'code' }}
+    {{ 1 | currency:conversion.query.from:'code':'1.0-0' }} = {{ conversion.info.rate | currency:conversion.query.to:'code':'1.2-4' }}<br>
+    {{ 1 | currency:conversion.query.to:'code':'1.0-0' }} = {{ (1 / conversion.info.rate) | currency:conversion.query.from:'code':'1.2-4' }}
   </p>
+  <app-rate-history [from]="conversion.query.from" [to]="conversion.query.to"></app-rate-history>
 </div>

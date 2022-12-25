@@ -5,6 +5,10 @@ form {
   align-items: center;
 }
 
+[type=submit] {
+  text-transform: uppercase;
+}
+
 .symbols {
   display: flex;
   align-items: center;
@@ -23,6 +27,12 @@ form {
 .conversion {
   text-align: center;
   margin-top: 32px;
+}
+
+app-rate-history {
+  display: block;
+  margin-top: 48px;
+  text-align: initial;
 }
 
 .result {
