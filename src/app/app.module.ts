@@ -17,9 +17,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { ConversionHistoryComponent } from './components/conversion-history/conversion-history.component';
-import { RateHistoryComponent } from './components/home/rate-history/rate-history.component';
-import { RateTrendTableComponent } from './components/home/rate-history/rate-trend-table/rate-trend-table.component';
-import { RateTrendChartComponent } from './components/home/rate-history/rate-trend-chart/rate-trend-chart.component';
+import { RateHistoryComponent } from './components/rate-history/rate-history.component';
+import { RateTrendTableComponent } from './components/rate-trend-table/rate-trend-table.component';
+import { RateTrendChartComponent } from './components/rate-trend-chart/rate-trend-chart.component';
 
 @NgModule({
   declarations: [
