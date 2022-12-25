@@ -15,17 +15,17 @@ interface SymbolsResponse {
   };
 }
 
-export interface ConvertQuery {
+export interface ConversionQuery {
   from: string;
   to: string;
   amount: number;
 }
 
-export interface ConvertResponse {
+export interface ConversionResponse {
   info: {
     rate: number;
   };
-  query: ConvertQuery;
+  query: ConversionQuery;
   result: number;
 }
 
@@ -59,13 +59,13 @@ export class CurrencyDataService {
     return this.http.get<SymbolsResponse>(`${API_BASE}/symbols`).pipe(map((r) => Object.keys(r.symbols)));
   }
 
-  convert({ from, to, amount }: ConvertQuery) {
+  getConversion({ from, to, amount }: ConversionQuery) {
     const params = new HttpParams()
       .set('from', from)
       .set('to', to)
       .set('amount', amount);
 
-    return this.http.get<ConvertResponse>(`${API_BASE}/convert`, { params });
+    return this.http.get<ConversionResponse>(`${API_BASE}/convert`, { params });
   }
 
   getTimeseries({ startDate: start_date, endDate: end_date, base, symbols }: TimeseriesQuery): Observable<Timeseries> {

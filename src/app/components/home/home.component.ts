@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ConvertQuery, ConvertResponse as Conversion, CurrencyDataService } from 'src/app/services/currency.data.service';
+import { ConversionQuery, ConversionResponse as Conversion, CurrencyDataService } from 'src/app/services/currency.data.service';
 
 @Component({
   selector: 'app-home',
@@ -18,8 +18,8 @@ export class HomeComponent implements OnInit {
   }
 
   convert() {
-    this.currencyDataService.convert(
-      this.conversionForm.value as unknown as ConvertQuery
+    this.currencyDataService.getConversion(
+      this.conversionForm.value as unknown as ConversionQuery
     ).subscribe((conversion) => this.conversion = conversion);
   }
 
