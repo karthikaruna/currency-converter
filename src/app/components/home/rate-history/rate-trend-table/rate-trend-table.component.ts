@@ -10,7 +10,7 @@ export class RateTrendTableComponent implements OnChanges {
   @Input() timeseries!: Timeseries;
   displayedTimeseriesColumns = ['date', 'rate'];
 
-  statistics!: Array<{ label: string; value: number }>;
+  statistics!: Array<{ label: string; value: string | number }>;
   displayedStatisticsColumns = ['label', 'value'];
 
   ngOnChanges() {
@@ -22,7 +22,7 @@ export class RateTrendTableComponent implements OnChanges {
         value: Math.max(...this.timeseries.map((x) => x.rate))
       }, {
         label: 'Average',
-        value: this.timeseries.reduce((acc, x) => acc + x.rate, 0) / this.timeseries.length
+        value: (this.timeseries.reduce((acc, x) => acc + x.rate, 0) / this.timeseries.length).toFixed(6)
       }];
   }
 }

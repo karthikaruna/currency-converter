@@ -25,11 +25,11 @@
 </form>
 <div *ngIf="conversion" class="conversion">
   <span class="result">
-    {{ conversion.query.amount | currency:conversion.query.from:'code' }} = <span>{{ conversion.result | currency:conversion.query.to:'code':'1.2-4' }}</span>
+    {{ conversion.query.amount | currency:conversion.query.from:'code':'1.0-0' }} = <span>{{ conversion.result | currency:conversion.query.to:'code':'1.2-6' }}</span>
   </span>
   <p>
-    {{ 1 | currency:conversion.query.from:'code':'1.0-0' }} = {{ conversion.info.rate | currency:conversion.query.to:'code':'1.2-4' }}<br>
-    {{ 1 | currency:conversion.query.to:'code':'1.0-0' }} = {{ (1 / conversion.info.rate) | currency:conversion.query.from:'code':'1.2-4' }}
+    {{ 1 | currency:conversion.query.from:'code':'1.0-0' }} = {{ conversion.info.rate | currency:conversion.query.to:'code':'1.2-6' }}<br>
+    {{ 1 | currency:conversion.query.to:'code':'1.0-0' }} = {{ (1 / conversion.info.rate) | currency:conversion.query.from:'code':'1.2-6' }}
   </p>
   <app-rate-history [from]="conversion.query.from" [to]="conversion.query.to"></app-rate-history>
 </div>
