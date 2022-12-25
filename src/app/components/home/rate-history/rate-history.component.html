@@ -1,5 +1,5 @@
 <h2 class="section-title">Exchange History</h2>
-<div>
+<div class="controls">
   <mat-form-field>
     <mat-label>Duration</mat-label>
     <mat-select [(ngModel)]="range" (ngModelChange)="updateTimeseries()">
@@ -12,4 +12,4 @@
   </mat-radio-group>
 </div>
 <app-rate-trend-table *ngIf="view === 'TABLE'" [timeseries]="timeseries"></app-rate-trend-table>
-<app-rate-trend-chart *ngIf="view === 'CHART'" [timeseries]="timeseries"></app-rate-trend-chart>
+<app-rate-trend-chart *ngIf="view === 'CHART'" [base]="base" [symbols]="symbols" [timeseries]="timeseries"></app-rate-trend-chart>
