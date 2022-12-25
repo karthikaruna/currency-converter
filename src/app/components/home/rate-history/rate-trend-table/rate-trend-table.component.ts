@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Timeseries } from 'src/app/services/currency.data.service';
 
 @Component({
   selector: 'app-rate-trend-table',
@@ -6,6 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./rate-trend-table.component.scss']
 })
 export class RateTrendTableComponent {
-  @Input() dataSource!: Array<{ date: string; rate: number }>;
+  @Input() dataSource!: Timeseries;
   displayedColumns = ['date', 'rate'];
 }

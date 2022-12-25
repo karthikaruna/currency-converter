@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 const API_BASE = 'https://api.exchangerate.host';
 
@@ -28,6 +28,8 @@ export interface ConvertResponse {
   query: ConvertQuery;
   result: number;
 }
+
+export type Timeseries = Array<{ date: string; rate: number }>;
 
 interface TimeseriesQuery {
   startDate: string;
@@ -66,7 +68,7 @@ export class CurrencyDataService {
     return this.http.get<ConvertResponse>(`${API_BASE}/convert`, { params });
   }
 
-  getTimeseries({ startDate: start_date, endDate: end_date, base, symbols }: TimeseriesQuery) {
+  getTimeseries({ startDate: start_date, endDate: end_date, base, symbols }: TimeseriesQuery): Observable<Timeseries> {
     const params = new HttpParams()
       .set('start_date', start_date)
       .set('end_date', end_date)
