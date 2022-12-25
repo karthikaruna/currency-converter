@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgChartsModule } from 'ng2-charts';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
@@ -38,6 +39,7 @@ import { RateTrendChartComponent } from './components/rate-trend-chart/rate-tren
     ReactiveFormsModule,
     HttpClientModule,
     NgChartsModule,
+    NgxWebstorageModule.forRoot(),
     MatFormFieldModule,
     MatTableModule,
     MatInputModule,
