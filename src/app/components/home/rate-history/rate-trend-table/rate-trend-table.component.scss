@@ -1,5 +1,19 @@
 @import 'src/styles/variables';
 
-.mdc-data-table__header-cell {
+:host {
+  display: flex;
+  align-items: flex-start;
+}
+
+table {
+  min-width: initial;
+  width: 50%;
+
+  &:first-child {
+    margin-right: 24px;
+  }
+}
+
+th {
   color: $table-header-text;
 }

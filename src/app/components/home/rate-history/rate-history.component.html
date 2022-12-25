@@ -2,7 +2,7 @@
 <div>
   <mat-form-field>
     <mat-label>Duration</mat-label>
-    <mat-select [(ngModel)]="range">
+    <mat-select [(ngModel)]="range" (ngModelChange)="updateTimeseries()">
       <mat-option *ngFor="let range of ranges" [value]="range.value">{{ range.label }}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -11,4 +11,4 @@
     <mat-radio-button value="CHART">Chart</mat-radio-button>
   </mat-radio-group>
 </div>
-<app-rate-trend-table [dataSource]="timeseries"></app-rate-trend-table>
+<app-rate-trend-table *ngIf="view === 'TABLE'" [timeseries]="timeseries"></app-rate-trend-table>

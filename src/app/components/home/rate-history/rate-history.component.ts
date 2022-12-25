@@ -12,7 +12,7 @@ export class RateHistoryComponent implements OnChanges {
 
   range: 7 | 14 | 30 = 7;
   view: 'TABLE' | 'CHART' = 'TABLE';
-  timeseries!: Timeseries;
+  timeseries: Timeseries = [];
 
   ranges = [{
     label: '7 days',
