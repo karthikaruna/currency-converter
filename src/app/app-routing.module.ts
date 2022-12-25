@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HistoryComponent } from './components/history/history.component';
+import { ConversionHistoryComponent } from './components/conversion-history/conversion-history.component';
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'history',
-    component: HistoryComponent
+    component: ConversionHistoryComponent
   }
 ];
 

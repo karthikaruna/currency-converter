@@ -15,7 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
-import { HistoryComponent } from './components/history/history.component';
+import { ConversionHistoryComponent } from './components/conversion-history/conversion-history.component';
 import { RateHistoryComponent } from './components/home/rate-history/rate-history.component';
 import { RateTrendTableComponent } from './components/home/rate-history/rate-trend-table/rate-trend-table.component';
 
@@ -24,7 +24,7 @@ import { RateTrendTableComponent } from './components/home/rate-history/rate-tre
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    HistoryComponent,
+    ConversionHistoryComponent,
     RateHistoryComponent,
     RateTrendTableComponent
   ],
