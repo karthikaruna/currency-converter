@@ -18,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ConversionHistoryComponent } from './components/conversion-history/conversion-history.component';
 import { RateHistoryComponent } from './components/home/rate-history/rate-history.component';
 import { RateTrendTableComponent } from './components/home/rate-history/rate-trend-table/rate-trend-table.component';
+import { RateTrendChartComponent } from './components/home/rate-history/rate-trend-chart/rate-trend-chart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RateTrendTableComponent } from './components/home/rate-history/rate-tre
     HomeComponent,
     ConversionHistoryComponent,
     RateHistoryComponent,
-    RateTrendTableComponent
+    RateTrendTableComponent,
+    RateTrendChartComponent
   ],
   imports: [
     BrowserModule,
