@@ -29,6 +29,24 @@ export interface ConvertResponse {
   result: number;
 }
 
+interface TimeseriesQuery {
+  startDate: string;
+  endDate: string;
+  base: string;
+  symbols: string;
+}
+
+interface TimeseriesResponse {
+  base: string;
+  end_date: string;
+  start_date: string;
+  rates: {
+    [date: string]: {
+      [symbol: string]: number;
+    }
+  }
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -46,5 +64,15 @@ export class CurrencyDataService {
       .set('amount', amount);
 
     return this.http.get<ConvertResponse>(`${API_BASE}/convert`, { params });
+  }
+
+  getTimeseries({ startDate: start_date, endDate: end_date, base, symbols }: TimeseriesQuery) {
+    const params = new HttpParams()
+      .set('start_date', start_date)
+      .set('end_date', end_date)
+      .set('base', base)
+      .set('symbols', symbols);
+
+    return this.http.get<TimeseriesResponse>(`${API_BASE}/timeseries`, { params });
   }
 }
