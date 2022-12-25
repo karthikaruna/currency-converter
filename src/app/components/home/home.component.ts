@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { LocalStorage } from 'ngx-webstorage';
 import { ConversionQuery, ConversionResponse as Conversion, CurrencyDataService } from 'src/app/services/currency.remote.service';
-import { ConversionHistory } from 'src/types';
+import { ConversionHistory } from 'src/app/types';
 
 function positiveNumber(control: FormControl): ValidationErrors | null {
   return Number(control.value) <= 0 ? { positiveNumber: true } : null;
