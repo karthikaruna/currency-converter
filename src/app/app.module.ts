@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
@@ -16,6 +17,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { HistoryComponent } from './components/history/history.component';
 import { RateHistoryComponent } from './components/home/rate-history/rate-history.component';
+import { RateTrendTableComponent } from './components/home/rate-history/rate-trend-table/rate-trend-table.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { RateHistoryComponent } from './components/home/rate-history/rate-histor
     HeaderComponent,
     HomeComponent,
     HistoryComponent,
-    RateHistoryComponent
+    RateHistoryComponent,
+    RateTrendTableComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { RateHistoryComponent } from './components/home/rate-history/rate-histor
     ReactiveFormsModule,
     HttpClientModule,
     MatFormFieldModule,
+    MatTableModule,
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
