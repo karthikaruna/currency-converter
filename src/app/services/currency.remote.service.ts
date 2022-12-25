@@ -1,53 +1,16 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import {
+  SymbolsResponse,
+  ConversionQuery,
+  ConversionResponse,
+  TimeseriesQuery,
+  Timeseries,
+  TimeseriesResponse
+} from '../types';
 
 const API_BASE = 'https://api.exchangerate.host';
-
-interface Symbol {
-  code: string;
-  description: string;
-}
-
-interface SymbolsResponse {
-  symbols: {
-    [code: string]: Symbol
-  };
-}
-
-export interface ConversionQuery {
-  from: string;
-  to: string;
-  amount: number;
-}
-
-export interface ConversionResponse {
-  info: {
-    rate: number;
-  };
-  query: ConversionQuery;
-  result: number;
-}
-
-export type Timeseries = Array<{ date: string; rate: number }>;
-
-interface TimeseriesQuery {
-  startDate: string;
-  endDate: string;
-  base: string;
-  symbols: string;
-}
-
-interface TimeseriesResponse {
-  base: string;
-  end_date: string;
-  start_date: string;
-  rates: {
-    [date: string]: {
-      [symbol: string]: number;
-    }
-  }
-}
 
 @Injectable({
   providedIn: 'root'

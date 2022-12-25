@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { CurrencyDataService, Timeseries } from 'src/app/services/currency.remote.service';
+import { CurrencyDataService } from 'src/app/services/currency.remote.service';
+import { Timeseries } from 'src/app/types';
 
 @Component({
   selector: 'app-rate-history',
