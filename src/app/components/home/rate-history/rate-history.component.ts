@@ -7,8 +7,8 @@ import { CurrencyDataService, Timeseries } from 'src/app/services/currency.data.
   styleUrls: ['./rate-history.component.scss']
 })
 export class RateHistoryComponent implements OnChanges {
-  @Input('from') base!: string;
-  @Input('to') symbols!: string;
+  @Input() from!: string;
+  @Input() to!: string;
 
   range: 7 | 14 | 30 = 7;
   view: 'TABLE' | 'CHART' = 'TABLE';
@@ -35,8 +35,8 @@ export class RateHistoryComponent implements OnChanges {
     return this.currencyDataService.getTimeseries({
       startDate: new Date(Date.now() - this.range * 24 * 60 * 60 * 1000).toISOString(),
       endDate: new Date().toISOString(),
-      base: this.base,
-      symbols: this.symbols
+      base: this.from,
+      symbols: this.to
     }).subscribe((timeseries) => this.timeseries = timeseries);
   }
 }

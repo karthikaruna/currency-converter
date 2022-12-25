@@ -9,8 +9,8 @@ import { Timeseries } from 'src/app/services/currency.data.service';
 })
 export class RateTrendChartComponent implements OnChanges {
   @Input() timeseries!: Timeseries;
-  @Input() base!: string;
-  @Input() symbols!: string;
+  @Input() baseSymbol!: string;
+  @Input() targetSymbol!: string;
 
   data!: ChartData<'line', Array<{ x: string; y: number }>>;
   options!: ChartOptions<'line'>;
@@ -36,7 +36,7 @@ export class RateTrendChartComponent implements OnChanges {
         },
         title: {
           display: true,
-          text: `Price of 1 ${this.base} in ${this.symbols}`
+          text: `Price of 1 ${this.baseSymbol} in ${this.targetSymbol}`
         }
       },
     };
