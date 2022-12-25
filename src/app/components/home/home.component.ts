@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { ConversionQuery, ConversionResponse as Conversion, CurrencyDataService } from 'src/app/services/currency.data.service';
+import { ConversionQuery, ConversionResponse as Conversion, CurrencyDataService } from 'src/app/services/currency.remote.service';
 
 function positiveNumber(control: FormControl): ValidationErrors | null {
   return Number(control.value) <= 0 ? { positiveNumber: true } : null;

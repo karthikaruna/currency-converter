@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { Timeseries } from 'src/app/services/currency.data.service';
+import { Timeseries } from 'src/app/services/currency.remote.service';
 
 @Component({
   selector: 'app-rate-trend-table',
