@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { ConversionQuery, ConversionResponse as Conversion, CurrencyDataService } from 'src/app/services/currency.data.service';
+
+function positiveNumber(control: FormControl): ValidationErrors | null {
+  return Number(control.value) <= 0 ? { positiveNumber: true } : null;
+}
 
 @Component({
   selector: 'app-home',
@@ -36,7 +40,7 @@ export class HomeComponent implements OnInit {
   }
 
   conversionForm = new FormGroup({
-    amount: new FormControl(null, Validators.required),
+    amount: new FormControl(null, [Validators.required, positiveNumber]),
     from: new FormControl(null, Validators.required),
     to: new FormControl(null, Validators.required),
   });

@@ -2,7 +2,7 @@
 <form [formGroup]="conversionForm" (submit)="convert()">
   <mat-form-field>
     <mat-label>Amount</mat-label>
-    <input type="number" min="0" formControlName="amount" matInput>
+    <input type="number" formControlName="amount" matInput>
   </mat-form-field>
   <div class="symbols">
     <mat-form-field>

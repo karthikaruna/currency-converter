@@ -42,11 +42,3 @@ app-rate-history {
     color: $accent;
   }
 }
-
-:host {
-  ::ng-deep {
-    .mdc-text-field {
-      background-color: transparent;
-    }
-  }
-}
