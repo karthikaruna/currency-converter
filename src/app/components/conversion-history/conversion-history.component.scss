@@ -1,0 +1,11 @@
+@import 'src/styles/variables';
+
+mat-header-cell {
+  color: $table-header-text;
+}
+
+mat-cell:last-of-type span {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}

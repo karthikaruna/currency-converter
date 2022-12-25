@@ -1,1 +1,25 @@
 <h1 class="page-title">Conversion history</h1>
+<mat-table *ngIf="conversionHistory.length" [dataSource]="conversionHistory">
+  <ng-container matColumnDef="time">
+    <mat-header-cell *matHeaderCellDef>Time</mat-header-cell>
+    <mat-cell *matCellDef="let item">{{ item.time | date:'medium' }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="event">
+    <mat-header-cell *matHeaderCellDef>Event</mat-header-cell>
+    <mat-cell *matCellDef="let item">Converted an amount of {{ item.amount | currency:item.from:'code' }} to {{ item.to }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+    <mat-cell *matCellDef="let item; let i = index">
+      <span (click)="navigate(item)">
+        <mat-icon color="primary" fontIcon="visibility"></mat-icon>View
+      </span>&nbsp;&nbsp;
+      <span (click)="delete(i)">
+        <mat-icon color="warn" fontIcon="delete"></mat-icon> Delete from history
+      </span>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+<p *ngIf="!conversionHistory.length">You're yet to perform a conversion</p>
