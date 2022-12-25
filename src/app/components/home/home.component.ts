@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { LocalStorage } from 'ngx-webstorage';
 import { ConversionQuery, ConversionResponse as Conversion, CurrencyDataService } from 'src/app/services/currency.remote.service';
 import { ConversionHistory } from 'src/app/types';
@@ -14,7 +15,10 @@ function positiveNumber(control: FormControl): ValidationErrors | null {
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor(private currencyDataService: CurrencyDataService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private currencyDataService: CurrencyDataService
+  ) {}
 
   @LocalStorage('conversionHistory', []) conversionHistory!: ConversionHistory;
   symbols!: Array<string>;
@@ -22,6 +26,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.currencyDataService.getSymbols().subscribe((symbols) => this.symbols = symbols);
+    const { queryParams } = this.route.snapshot;
+
+    if (Object.keys(queryParams).length) {
+      this.conversionForm.patchValue(queryParams);
+      this.convert();
+    }
   }
 
   convert() {
