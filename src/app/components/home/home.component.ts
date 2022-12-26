@@ -39,11 +39,11 @@ export class HomeComponent implements OnInit {
       .subscribe((conversion) => {
         this.conversion = conversion;
         this.conversionHistory = [
-          ...this.conversionHistory,
           {
             ...conversion.query,
             time: Date.now()
-          }
+          },
+          ...this.conversionHistory
         ];
       });
   }

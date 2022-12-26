@@ -1,11 +1,17 @@
 @import 'src/styles/variables';
 
+$actions: 'mat-cell:last-of-type span';
+
 mat-header-cell {
   color: $table-header-text;
 }
 
-mat-cell:last-of-type span {
-  display: flex;
+#{$actions} {
+  display: none;
   align-items: center;
   cursor: pointer;
+}
+
+mat-row:hover #{$actions} {
+  display: flex;
 }

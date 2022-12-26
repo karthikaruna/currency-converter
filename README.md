@@ -1,27 +1,22 @@
 # CurrencyConverter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2 and developed using Node.js v16.17.0
 
-## Development server
+I'm attaching a tiny [walkthrough](./walkthrough.mov), but if anything about the code is unclear, please save it for me to explain over a demo.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Run
 
-## Code scaffolding
+```
+cd currency-converter
+nvm use 16
+npm install
+npm run start
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Navigate to `http://localhost:4200/` then
 
-## Build
+## Assumptions
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. I used the [MUI](https://material.angular.io/) component library since the provided designs depict the same, plus, to save time by not recreating
+2. I used the package [ngx-webstorage](https://www.npmjs.com/package/ngx-webstorage) to simplify management of localStorage. I alternatively could've created a service extending localStorage, but using the package felt neat. Particularly I like the `LocalStorage` decorator.
+3. Didn't want to do premature optimizations. Eg., you'll see props being threaded one extra level in a place or two, but that's it. At this point, it felt okay to leave it be and not use a sharing service.
